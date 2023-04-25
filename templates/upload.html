@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blind Test</title>
+	<link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="../index.html">Home</a></li>
+			<li><a href="register.html">Register</a></li>
+			<li><a href="upload.html">Upload Playlist</a></li>
+			<li><a href="game.html">Play Game</a></li>
+		</ul>
+	</nav>
+
+	<div>
+		<label for="playlist-input">Select your playlist file:</label>
+		<input type="file" id="playlist-input" accept=".txt">
+		<button id="playlist-button">Upload</button>
+		<button id="reset-button">Reset Playlists</button>
+		<button id="compare-button">Compare</button>
+	</div>
+
+	<div>
+		<h2>Artists in your playlist:</h2>
+		<ul id="artist-list"></ul>
+	</div>
+	<script src="../js/blindtest.js"></script>
+</body>
+</html>
