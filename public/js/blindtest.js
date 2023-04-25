@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
           listItem.textContent = artist;
           artistList.appendChild(listItem);
         }
-        localStorage.setItem('commonArtists', JSON.stringify(commonArtists));
+        localStorage.setItem('commonArtists', commonArtists);
       }
     }
   }

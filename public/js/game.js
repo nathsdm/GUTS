@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const commonArtists = localStorage.getItem('commonArtists').split(',');
+  const commonArtists = localStorage.getItem('commonArtists').replace(/[\[\]"]/g, '').split(',');
   console.log(commonArtists);
   var playButton = document.getElementById('play-button');
   var pauseButton = document.getElementById('pause-button');
+  let round = 1;
+  const next_btn = document.getElementById('next-button');
   
   // hide default audio controls
   var audio = document.getElementById('audio-player');
@@ -36,6 +38,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
   launch(commonArtists[0]);
+  next_btn.addEventListener('click', function() {
+    pauseButton.style.display = 'none';
+    playButton.style.display = 'block';
+    if(commonArtists[round] !== '') {
+      launch(commonArtists[round]);
+      round++;
+    } else {
+      alert('End of the game');
+    }
+  });
 });
 
 function launch(artistName) {
