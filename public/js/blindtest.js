@@ -39,6 +39,32 @@ document.addEventListener("DOMContentLoaded", function() {
     handleFiles(files);
   });
 
+  const future_funck_button = document.getElementById('future-funk-button');
+  future_funck_button.addEventListener('click', function() {
+    var appId = '599484';
+    var apiKey = 'd2e83b6af668d8f382ba6fcc10050921';
+    const playlist_url = "https://api.deezer.com/playlist/7470091424" + '&output=jsonp&callback=?&app_id=' + appId + '&api_key=' + apiKey;
+    // Remove the 'selected' class from all buttons
+    const buttons = document.getElementsByTagName('button');
+    for (const button of buttons) {
+      button.classList.remove('selected');
+    }
+    // Add the 'selected' class to the clicked button
+    future_funck_button.classList.add('selected');
+    $.getJSON(playlist_url, function(data) {
+      let song_urls = [];
+      for(var i = 0; i < data.tracks.data.length; i++) {
+        var song = data.tracks.data[i];
+        if (song && song.preview) {
+          song_urls.push(song.preview);
+        } else {
+          console.log('No song found');
+        }
+      }
+      localStorage.setItem('song_urls', JSON.stringify(song_urls));
+    });
+  });
+
   function handleFiles(files) {
     const playlists = [];
     for(const file of files) {
@@ -73,6 +99,10 @@ document.addEventListener("DOMContentLoaded", function() {
           listItem.textContent = artist;
           artistList.appendChild(listItem);
         }
+        if(commonArtists.length === 0) {
+          alert('No common artists found');
+          artistList.innerHTML = 'No common artists found...';
+        }
         localStorage.setItem('commonArtists', commonArtists);
       }
     }
@@ -83,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Clear the playlists array and the list of shared artists
     const artistList = document.getElementById('artist-list');
     artistList.innerHTML = '';
-    localStorage.setItem('commonArtists', JSON.stringify([]));
+    localStorage.setItem('commonArtists', 'undefined');
+    localStorage.setItem('song_urls', 'undefined');
   });
 });
