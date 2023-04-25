@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blind Test</title>
+	<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="{{ url_for('register') }}">Register</a></li>
+			<li><a href="templates/upload.html">Upload Playlist</a></li>
+			<li><a href="templates/game.html">Play Game</a></li>
+		</ul>
+	</nav>
+	<h1>Welcome to Blind Test</h1>
+	<p>Get ready to test your music knowledge!</p>
+	<script>
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "firebase/app";
+		import { getAnalytics } from "firebase/analytics";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		const firebaseConfig = {
+		apiKey: "AIzaSyAhsAUoBXrPqBclyC1o0ibwcKWApEaM8fo",
+		authDomain: "bionic-tracer-358519.firebaseapp.com",
+		projectId: "bionic-tracer-358519",
+		storageBucket: "bionic-tracer-358519.appspot.com",
+		messagingSenderId: "936748069792",
+		appId: "1:936748069792:web:55b7a61571fc0ecec92ac5",
+		measurementId: "G-ELMSSN02VF"
+		};
+
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);
+	</script>
+</body>
+</html>
