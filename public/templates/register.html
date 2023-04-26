@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Blind Test</title>
+	<title>Blind Test - Register</title>
 	<link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
@@ -13,5 +13,21 @@
 			<li><a href="game.html">Play Game</a></li>
 		</ul>
 	</nav>
+
+	<div>
+		<h2>Register</h2>
+		<label for="email-input">Email:</label>
+		<input type="email" id="email-input">
+		<label for="password-input">Password:</label>
+		<input type="password" id="password-input">
+		<button id="register-button">Register</button>
+		<button id="sign-in-button">Sign in</button>
+	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="../js/firebase-config.js"></script>
+	<script src="../js/register.js"></script>
 </body>
 </html>

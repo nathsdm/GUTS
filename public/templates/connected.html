@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connected Page</title>
+	<link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <nav>
+		<ul>
+			<li><a href="../index.html">Home</a></li>
+			<li><a href="register.html">Register</a></li>
+			<li><a href="upload.html">Upload Playlist</a></li>
+			<li><a href="game.html">Play Game</a></li>
+		</ul>
+	</nav>
+    <h1>Connected Page</h1>
+    <div id="user-info">
+        <h2>User Info</h2>
+        <p>Email: <span id="email"></span></p>
+        <p>Display Name: <span id="display-name"></span></p>
+        <p>User ID: <span id="user-id"></span></p>
+    </div>
+    <button id="sign-out-btn">Sign Out</button>
+
+    <!-- Firebase App -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="../js/firebase-config.js"></script>
+
+    <!-- Main Script -->
+    <script src="../js/connected.js"></script>
+</body>
+</html>
