@@ -2,6 +2,39 @@
 var auth = firebase.auth();
 var firestore = firebase.firestore();
 
+
+
+
+
+// Get the authenticated user's unique identifier (UID)
+const user = firebase.auth().currentUser;
+const uid = user.uid;
+
+// Create a new playlist document in the database
+const playlistData = {
+  name: "My Playlist",
+  songs: ["Song 1", "Song 2", "Song 3"]
+};
+
+// Save the playlist data under the user's unique identifier
+firebase.database().ref('users/' + uid + '/playlists').push(playlistData)
+  .then(() => {
+    console.log("Playlist saved successfully!");
+  })
+  .catch((error) => {
+    console.error("Error saving playlist:", error);
+  });
+
+
+
+
+
+
+
+
+
+
+
 // Check if user is signed in
 auth.onAuthStateChanged(function(user) {
     if (user) {

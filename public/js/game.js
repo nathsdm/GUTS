@@ -1,13 +1,17 @@
 // Define global variables
 let commonArtists = [];
 let songUrls = [];
-let round = 1;
+let Artists = [];
+let Songs = [];
+let mode = 'undefined';
+let round = 0;
 
 // Get DOM elements
 const playButton = document.getElementById('play-button');
 const pauseButton = document.getElementById('pause-button');
 const nextButton = document.getElementById('next-button');
 const audioPlayer = document.getElementById('audio-player');
+const display = document.getElementById('display-button');
 
 // Hide default audio controls
 audioPlayer.controls = false;
@@ -24,6 +28,11 @@ pauseButton.addEventListener('click', function() {
   audioPlayer.pause();
   pauseButton.style.display = 'none';
   playButton.style.display = 'block';
+});
+
+// Event listener for display button
+display.addEventListener('click', function() {
+  alert(Artists[round] + ' - ' + Songs[round]);
 });
 
 // Event listener for spacebar to play/pause
@@ -46,27 +55,44 @@ window.addEventListener('keydown', function(event) {
 nextButton.addEventListener('click', function() {
   pauseButton.style.display = 'none';
   playButton.style.display = 'block';
-  if (songUrls[round] !== '') {
-    changeSong(songUrls[round]);
-    round++;
-  } else {
-    alert('End of the game');
+  if(mode === 'custom') {
+    if (commonArtists.length > round+1) {
+      launchArtist(commonArtists[round+1]);
+      round++;
+    } else {
+      alert('End of the game');
+    }
+  } else if(mode === 'premade') {
+    if (songUrls[round+1] !== '') {
+      changeSong(songUrls[round+1]);
+      round++;
+    } else {
+      alert('End of the game');
+    }
+  } else if(mode === 'undefined') {
+    alert('No songs to play');
   }
 });
 
 // Check if song URLs are present in local storage
-if (localStorage.getItem('song_urls') === 'undefined') {
+if (localStorage.getItem('song_urls') === null) {
+  if(localStorage.getItem('commonArtists') === null) {
+    alert('No songs to play');
+  } else {
   // Get common artists and replace unwanted characters
   commonArtists = localStorage.getItem('commonArtists').replace(/[\[\]"]/g, '').split(',');
-  
-  // Launch the first artist
-  launchArtist(commonArtists[0]);
+  mode = 'custom';
+  // Launch first artist
+  launchArtist(commonArtists[round]);
+  }
 } else {
   // Parse song URLs from local storage
   songUrls = JSON.parse(localStorage.getItem('song_urls'));
-  
+  Artists = JSON.parse(localStorage.getItem('artist_names'));
+  Songs = JSON.parse(localStorage.getItem('song_names'));
+  mode = 'premade';
   // Change song to the first one in the list
-  changeSong(songUrls[0]);
+  changeSong(songUrls[round]);
 }
 
 // Launch artist and get song URL
@@ -86,6 +112,12 @@ function launchArtist(artistName) {
         const song = data.data[0];
         if (song) {
           const songUrl = song.preview;
+          const songName = song.title;
+          const artistName = song.artist.name;
+          Songs.push(songName);
+          Artists.push(artistName);
+          localStorage.setItem('artist_names', JSON.stringify(Artists));
+          localStorage.setItem('song_names', JSON.stringify(Songs));
           songUrls.push(songUrl);
           changeSong(songUrl);
         } else {

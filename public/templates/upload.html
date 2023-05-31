@@ -23,10 +23,22 @@
 		</div>
 		<label for="playlist-input">... Or select a theme bellow:</label>
 		<button id="future-funk-button">Future Funk</button>
+		<button id="lofi-button">Lofi</button>
+		<button id="jazz-button">Jazz</button>
+		<button id="random-playlist-button">Random playlist from somebody aroud the world</button>
 	</div>
 	<div>
-		<h2>Artists in your playlist:</h2>
-		<ul id="artist-list"></ul>
+		<table class="table table-responsive library-list">
+			<thead>
+				<tr>
+					<th style="media-cell">Playlists</th>
+					<th style="number-cell">Number of songs</th>
+					<th "edit-entry">Remove</th>
+				</tr>
+			</thead>
+			<tbody id="playlist-list">
+			</tbody>
+		</table>
 	</div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="../js/blindtest.js"></script>

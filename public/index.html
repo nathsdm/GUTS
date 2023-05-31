@@ -15,5 +15,12 @@
 	</nav>
 	<h1>Welcome to Blind Test</h1>
 	<p>Get ready to test your music knowledge!</p>
+	<button id="don't click me">Don't click me</button>
+	<script>
+		var button = document.getElementById("don't click me");
+		button.addEventListener("click", function() {
+			window.location.href = "dontclickthatbutton.html";
+		});
+	</script>
 </body>
 </html>

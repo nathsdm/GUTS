@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Trapped in Pop-up</title>
+</head>
+<body>
+
+<script>
+function openWindow() {
+  var popup = window.open("", "_blank", "width=1,height=1");
+  popup.resizeTo(screen.width,screen.height);
+  popup.focus();
+  setTimeout(closeWindow, 2000);
+}
+
+function closeWindow() {
+  if(!window.closed){
+    window.close();
+    openWindow();
+  }
+}
+
+function blockedPopup() {
+  var popup = window.open("", "_blank", "width=1,height=1");
+  popup.moveTo(0,0);
+  popup.resizeTo(screen.width,screen.height);
+  return popup;
+}
+
+var popup = blockedPopup();
+if (!popup || popup.closed || typeof popup.closed=='undefined') {
+  alert('Please don\'t unblock pop-ups, you will regret it.');
+} else {
+  popup.close();
+  openWindow();
+}
+
+setInterval(function(){
+    location.reload();
+}, 1000);
+
+</script>
+
+</body>
+</html>
