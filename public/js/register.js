@@ -18,6 +18,8 @@ registerButton.addEventListener('click', (e) => {
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if (firebaseUser) {
     console.log(firebaseUser);
+    localStorage.setItem('user', firebaseUser);
+    localStorage.setItem('uid', firebaseUser.uid);
     window.location = "connected.html";
   } else {
     console.log('not logged in');

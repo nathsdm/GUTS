@@ -1,5 +1,6 @@
 var commonArtists = [];
 
+
 function findCommonArtists(playlists) {
   // Get an array of all unique artists in all playlists
   const allArtists = Array.from(
@@ -139,8 +140,66 @@ function handleFiles(files) {
         table.deleteRow(editButton.parentNode.parentNode.rowIndex);
         playlists.splice(playlists.indexOf(artists), 1);}
       );
-    }
+
+    };
+
   }
+  
+  const uid = localStorage.getItem('uid');
+  if(uid) {
+    const playlists_save = {
+      title: 'My Playlist',
+      artists: localStorage.getItem('commonArtists'),
+    };
+    fetch('http://localhost:8080/playlists/' + uid, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(playlists_save)
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Playlist added successfully');
+        } else {
+          console.error('Error adding playlist');
+        }
+      })
+      .catch((error) => {
+        console.error('Error adding playlist:', error);
+      });
+  }
+    else {
+      console.log('User is not logged in');
+    }
+
+
+  if (uid) {
+    fetch('http://localhost:8080/playlists/' + uid)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Error retrieving playlists');
+        }
+      })
+      .then((data) => {
+        // Process the retrieved data
+        console.log('Retrieved playlists:', data);
+        // Example: Access the title and songs of the first playlist
+        const firstPlaylist = data[0];
+        const title = firstPlaylist.title;
+        const songs = firstPlaylist.songs;
+        console.log('Title:', title);
+        console.log('Songs:', songs);
+      })
+      .catch((error) => {
+        console.error('Error retrieving playlists:', error);
+      });
+  } else {
+    console.log('User is not logged in');
+  }
+
 }
 
 // Event listener for "Reset Playlists" button
