@@ -3,24 +3,30 @@
 <head>
 	<title>Blind Test</title>
 	<link rel="stylesheet" href="static/style.css">
+  <link rel="icon" type="image/png" href="https://cdn.glitch.global/b6f58b33-3195-4f42-b176-d56c75f377a4/icon.png?v=1685623274271">
 </head>
 <body>
 	<nav>
 		<ul>
 			<li><a href="index.html">Home</a></li>
-			<li><a href="templates/register.html">Register</a></li>
+			<li id="registerLi"><a href="templates/register.html" id="registerLink">Register</a></li>
 			<li><a href="templates/upload.html">Upload Playlist</a></li>
+      <li><a href="templates/players.html">Players</a></li>
 			<li><a href="templates/game.html">Play Game</a></li>
 		</ul>
 	</nav>
 	<h1>Welcome to Blind Test</h1>
 	<p>Get ready to test your music knowledge!</p>
-	<button id="don't click me">Don't click me</button>
-	<script>
-		var button = document.getElementById("don't click me");
-		button.addEventListener("click", function() {
-			window.location.href = "dontclickthatbutton.html";
-		});
-	</script>
+  <script>
+  const uid = localStorage.getItem("uid");
+
+  if(uid) {
+    const registerLi = document.getElementById("registerLi");
+    const registerLink = document.getElementById("registerLink");
+    // User is logged in, change "Register" button to "Profile"
+    registerLink.textContent = "Profile";
+    registerLink.href = "templates/connected.html";
+  }
+  </script>
 </body>
 </html>

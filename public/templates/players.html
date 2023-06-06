@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blind Test</title>
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="icon" type="image/png" href="https://cdn.glitch.global/b6f58b33-3195-4f42-b176-d56c75f377a4/icon.png?v=1685623274271">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li id="registerLi"><a href="register.html" id="registerLink">Register</a></li>
+      <li><a href="upload.html">Upload Playlist</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="game.html">Play Game</a></li>
+    </ul>
+  </nav>
+  <h1>Players</h1>
+  <form id="add-player-form">
+    <input type="text" id="player-name-input" placeholder="Enter player name" />
+    <button type="submit">Add Player</button>
+  </form>
+
+  <ul id="player-list"></ul>
+
+  <button id="connect-button">Connect</button> <!-- New "Connect" button -->
+  
+  <script>
+  const uid = localStorage.getItem("uid");
+
+  if(uid) {
+    const registerLi = document.getElementById("registerLi");
+    const registerLink = document.getElementById("registerLink");
+    // User is logged in, change "Register" button to "Profile"
+    registerLink.textContent = "Profile";
+    registerLink.href = "connected.html";
+  }
+  </script>
+  
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/players.js"></script>
+</body>
+</html>
+

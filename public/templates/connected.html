@@ -3,13 +3,15 @@
 <head>
     <title>Connected Page</title>
 	<link rel="stylesheet" href="../static/style.css">
+  <link rel="icon" type="image/png" href="https://cdn.glitch.global/b6f58b33-3195-4f42-b176-d56c75f377a4/icon.png?v=1685623274271">
 </head>
 <body>
     <nav>
 		<ul>
 			<li><a href="../index.html">Home</a></li>
-			<li><a href="register.html">Register</a></li>
+			<li><a href="connected.html">Profile</a></li>
 			<li><a href="upload.html">Upload Playlist</a></li>
+      <li><a href="players.html">Players</a></li>
 			<li><a href="game.html">Play Game</a></li>
 		</ul>
 	</nav>
@@ -19,6 +21,7 @@
         <p>Email: <span id="email"></span></p>
         <p>Display Name: <span id="display-name"></span></p>
         <p>User ID: <span id="user-id"></span></p>
+        <button id="change-name-btn">Change Name</button>
     </div>
     <button id="sign-out-btn">Sign Out</button>
 
@@ -38,6 +41,5 @@
 
     <!-- Main Script -->
     <script src="../js/connected.js"></script>
-     
 </body>
 </html>

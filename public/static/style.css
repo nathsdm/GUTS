@@ -59,6 +59,7 @@ input[type=file] {
 button {
   font-size: 18px;
   padding: 10px 20px;
+  margin: 10px 0;
   background-color: #333;
   color: #fff;
   border: none;
