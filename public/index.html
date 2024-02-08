@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Blind Test</title>
+  <meta charset="utf-8">
+	<title>GUTS</title>
 	<link rel="stylesheet" href="static/style.css">
   <link rel="stylesheet" href="static/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome.min.css">
 </head>
 <body>
-  <div id="app">
-    <h1>GUTS</h1>
+  <div class="container">
+    <div class="main-body">
+      <a href="/"> Acceuil </a>
+      <a href="/Nathan"> Nathan </a>
+      <a href="/Marion"> Marion </a>
+      <div class="container">
+        <div class="card" id="Nathan">
+          <div class="card-body"> 
+            <h1> Nathan t bo </h1>
+            <p> comme un petit pet </p>
+          </div>
+        </div>
+        <div class="card" id="Nous">
+          <div class="card-body"> 
+            <h1> Nous somme bo </h1>
+            <p> comme des petits pets </p>
+          </div>
+        </div>
+        <div class="card" id="Marion">
+          <div class="card-body"> 
+            <h1> Marion t bo </h1>
+            <p> comme un petit pet </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <script>
+    var Nathan_card = document.getElementById("Nathan");
+
+    Nathan_card.addEventListener('click', function() {
+      alert('test')
+    })
+
+    Nathan_card.addEventListener('mouseover', function() {
+      document.body.style.cursor = "pointer";
+    })
+
+    Nathan_card.addEventListener('mouseout', function() {
+      document.body.style.cursor = "default";
+    })
+
+  </script>
 </body>
 </html>
