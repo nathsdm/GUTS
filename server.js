@@ -21,39 +21,32 @@ app.use(cors());
 // Serve static files (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Define a route for retrieving user playlists
-app.get('/playlists/:userId', (req, res) => {
-  const userId = req.params.userId;
-  const playlistsRef = db.collection('users').doc(userId).collection('playlists');
-
-  playlistsRef
-    .get()
-    .then((snapshot) => {
-      const playlists = snapshot.docs.map((doc) => doc.data());
-      res.json(playlists);
-    })
-    .catch((error) => {
-      console.error('Error retrieving playlists:', error);
-      res.status(500).send('Failed to retrieve playlists');
-    });
+// Define a route for retrieving user data
+app.get('/users', async (req, res) => {
+  const usersRef = db.collection('users');
+  const snapshot = await usersRef.get();
+  const users = [];
+  snapshot.forEach((doc) => {
+    users.push(doc.data());
+  });
+  res.send(users);
 });
 
-// Define a route for adding a playlist to a user
-app.post('/playlists/:userId', (req, res) => {
-  const userId = req.params.userId;
-  const playlist = req.body;
+// Define a route for adding a new user
+app.post('/users', async (req, res) => {
+  const user = req.body;
+  const usersRef = db.collection('users');
+  await usersRef.add(user);
+  res.send('User added');
+});
 
-  const playlistsRef = db.collection('users').doc(userId).collection('playlists');
-
-  playlistsRef
-    .add(playlist)
-    .then(() => {
-      res.send('Playlist added successfully');
-    })
-    .catch((error) => {
-      console.error('Error adding playlist:', error);
-      res.status(500).send('Failed to add playlist');
-    });
+// Define a route for updating a user
+app.put('/users/:id', async (req, res) => {
+  const id = req.params.id;
+  const user = req.body;
+  const usersRef = db.collection('users');
+  await usersRef.doc(id).update(user);
+  res.send('User updated');
 });
 
 // Start the server
