@@ -1,3 +1,5 @@
+localStorage.setItem('Account', 'Client')
+
 fetch('https://guts-69f13-default-rtdb.europe-west1.firebasedatabase.app/users.json')
   .then(response => response.json())
   .then(data => {
@@ -55,6 +57,7 @@ form.addEventListener('submit', (event) => {
         const keys = Object.keys(data);
         for(const key of keys) {
             if(data[key].name === name && data[key].password === password) {
+                localStorage.setItem('Account', "Admin")
                 window.location.href = '/home.html';
                 return;
             }
