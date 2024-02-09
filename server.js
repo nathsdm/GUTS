@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const jwt = require('jsonwebtoken');
 
 // Initialize Firebase Admin SDK
 const serviceAccount = require('./key.json');
@@ -47,6 +48,26 @@ app.put('/users/:id', async (req, res) => {
   const usersRef = db.collection('users');
   await usersRef.doc(id).update(user);
   res.send('User updated');
+});
+
+// Define a route for authenticating a user
+app.post('/login', async (req, res) => {
+  const { name, password } = req.body;
+  const usersRef = db.collection('users');
+  const snapshot = await usersRef.where('name', '==', name).get();
+  if (snapshot.empty) {
+    res.status(401).send('Invalid name or password');
+    return;
+  }
+  snapshot.forEach((doc) => {
+    const user = doc.data();
+    if (user.password === password) {
+      const token = jwt.sign({ name }, 'secret');
+      res.send(token);
+    } else {
+      res.status(401).send('Invalid name or password');
+    }
+  });
 });
 
 // Start the server

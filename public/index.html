@@ -1,115 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-	<title>GUTS</title>
-	<link rel="stylesheet" href="static/style.css">
-  <link rel="stylesheet" href="static/bootstrap.min.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="utf-8">
+    <title>GUTS</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
   <div class="container">
     <div class="main-body">
-      <a href="/"> Acceuil </a>
-      <a href="templates/nathan.html"> Nathan </a>
-      <a href="templates/marion.html"> Marion </a>
-      <a href="templates/test.html"> Test </a>
-      <div class="container">
-        <div class="card" id="Nathan">
-          <div class="card-body"> 
-            <h1> Nathan </h1>
-            <p> <3> </p>
-            <h1> CORPS </h1>
-            <div class="progress mb-corps" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> ENVIRONNEMENT </h1>
-            <div class="progress mb-environnement" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> SKILLS </h1>
-            <div class="progress mb-skills" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> BIEN-ETRE </h1>
-            <div class="progress mb-bien-etre" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> DEFIS </h1>
-            <div class="progress mb-defi" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
+    <form id="test-form" style="margin-top:30PX">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
-          </div>
-        </div>
-        <div class="card" id="Nous">
-          <div class="card-body"> 
-            <h1> Nous </h1>
-            <p> <3> </p>
-            <h1> CORPS </h1>
-            <div class="progress mb-corps" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> ENVIRONNEMENT </h1>
-            <div class="progress mb-environnement" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> SKILLS </h1>
-            <div class="progress mb-skills" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> BIEN-ETRE </h1>
-            <div class="progress-5"></div>
-            <h1> DEFIS </h1>
-            <div class="progress mb-defi" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <div class="card" id="Marion">
-          <div class="card-body"> 
-            <h1> Marion </h1>
-            <p> <3> </p>
-            <h1> CORPS </h1>
-            <div class="progress mb-corps" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> ENVIRONNEMENT </h1>
-            <div class="progress mb-environnement" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> SKILLS </h1>
-            <div class="progress mb-skills" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> BIEN-ETRE </h1>
-            <div class="progress mb-bien-etre" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h1> DEFIS </h1>
-            <div class="progress mb-defi" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
-  <script>
-    var Nathan_card = document.getElementById("Nathan");
-
-    Nathan_card.addEventListener('click', function() {
-      alert('test')
-    })
-
-    Nathan_card.addEventListener('mouseover', function() {
-      document.body.style.cursor = "pointer";
-    })
-
-    Nathan_card.addEventListener('mouseout', function() {
-      document.body.style.cursor = "default";
-    })
-
-  </script>
+  <script src="../js/login.js"></script>
 </body>
 </html>

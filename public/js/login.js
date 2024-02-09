@@ -55,7 +55,7 @@ form.addEventListener('submit', (event) => {
         const keys = Object.keys(data);
         for(const key of keys) {
             if(data[key].name === name && data[key].password === password) {
-                alert('Login successful');
+                window.location.href = '/home.html';
                 return;
             }
         }

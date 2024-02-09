@@ -12,7 +12,7 @@ body{
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
 }
 
-.container {
+.container-cards {
     display: flex;
 }
 
@@ -1431,15 +1431,4 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
       100% {background-size:120% 120%}
   }
   
-  /**/
-  body {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    grid-auto-rows: 130px;
-    place-items:center;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
 
