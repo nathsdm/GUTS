@@ -3,6 +3,14 @@
     "default": "guts-69f13",
     "guts": "guts-69f13"
   },
-  "targets": {},
+  "targets": {
+    "guts-69f13": {
+      "hosting": {
+        "TARGET_NAME": [
+          "guts"
+        ]
+      }
+    }
+  },
   "etags": {}
 }
