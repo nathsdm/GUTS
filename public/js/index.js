@@ -19,12 +19,14 @@ fetch('https://guts-69f13-default-rtdb.europe-west1.firebasedatabase.app/tasks.j
             const task = data[key].task;
             const points = data[key].points;
             const period = data[key].period;
+            const user = data[key].user;
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `
                 <h2>${task}</h2>
                 <p>${points} points</p>
                 <p>${period} days</p>
+                <p>${user}</p>
             `;
             document.getElementById('tasks').appendChild(card);
         }

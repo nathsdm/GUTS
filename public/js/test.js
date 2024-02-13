@@ -8,12 +8,14 @@ task_form.addEventListener('submit', (event) => {
     const task = document.getElementById("task").value;
     const points = document.getElementById("points").value;
     const period = document.getElementById("period").value;
+    const user = document.getElementById("user").value;
 
     // Construct data object
     const formData = {
         task: task,
         points: points,
-        period: period
+        period: period,
+        user: user
     };
 
     // Add new task
