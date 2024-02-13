@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "guts-69f13"
-  }
+    "default": "guts-69f13",
+    "guts": "guts-69f13"
+  },
+  "targets": {},
+  "etags": {}
 }
