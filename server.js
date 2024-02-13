@@ -50,24 +50,23 @@ app.put('/users/:id', async (req, res) => {
   res.send('User updated');
 });
 
-// Define a route for authenticating a user
-app.post('/login', async (req, res) => {
-  const { name, password } = req.body;
-  const usersRef = db.collection('users');
-  const snapshot = await usersRef.where('name', '==', name).get();
-  if (snapshot.empty) {
-    res.status(401).send('Invalid name or password');
-    return;
-  }
+// Define a route to add a new task
+app.post('/tasks', async (req, res) => {
+  const task = req.body;
+  const tasksRef = db.collection('tasks');
+  await tasksRef.add(task);
+  res.send('Task added');
+});
+
+// Define a route to retrieve tasks
+app.get('/tasks', async (req, res) => {
+  const tasksRef = db.collection('tasks');
+  const snapshot = await tasksRef.get();
+  const tasks = [];
   snapshot.forEach((doc) => {
-    const user = doc.data();
-    if (user.password === password) {
-      const token = jwt.sign({ name }, 'secret');
-      res.send(token);
-    } else {
-      res.status(401).send('Invalid name or password');
-    }
+    tasks.push(doc.data());
   });
+  res.send(tasks);
 });
 
 // Start the server
